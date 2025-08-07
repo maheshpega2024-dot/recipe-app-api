@@ -2,6 +2,8 @@
 
 All database models for the application.
 
+super user - admin@example.com/test@12345
+
 """
 
 from django.db import models
