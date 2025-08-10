@@ -8,6 +8,7 @@ from core.models import Tag
 from core.models import Ingredient
 
 
+
 class IngredientSerializer(serializers.ModelSerializer):
     """Serializer for Ingredient model."""
 
@@ -96,6 +97,23 @@ class RecipeDetailSerializer(RecipeSerializer):
     """Serializer for detailed Recipe model."""
 
     class Meta(RecipeSerializer.Meta):
-        fields = RecipeSerializer.Meta.fields + ('description',)
+        fields = RecipeSerializer.Meta.fields + ('description','image')
         read_only_fields = RecipeSerializer.Meta.read_only_fields + ('user',)
 
+
+class RecipeImageSerializer(serializers.ModelSerializer):
+    """Serializer for uploading images to recipes."""
+
+    class Meta:
+        model = Recipe
+        fields = ('id', 'image')
+        read_only_fields = ('id',)
+        extra_kwargs = {'image': {'required': True}}
+
+    def create(self, validated_data):
+        """Create a new recipe image."""
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        """Update an existing recipe image."""
+        return super().update(instance, validated_data)
