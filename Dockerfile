@@ -27,11 +27,7 @@ RUN python -m venv /py && \
         --no-create-home \
         django-user && \
     mkdir -p /vol/web/media && \
-    mkdir -p /vol/web/media/uploads && \
-    mkdir -p /vol/web/media/uploads/recipe && \
     mkdir -p /vol/web/static && \
-    mkdir -p /vol/web/static/uploads && \
-    mkdir -p /vol/web/static/uploads/recipe && \
     chown -R django-user:django-user /vol && \
     chmod -R 777 /vol 
 
